@@ -1,0 +1,6 @@
+{
+  "globalHeaders": {
+    "Content-Security-Policy": "frame-ancestors 'self' https://*.salescloud2.cloud.sap https://*.crm.cloud.sap https://*.crm.ondemand.com;",
+    "X-Frame-Options": ""
+  }
+}
