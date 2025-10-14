@@ -1,0 +1,11 @@
+<script>
+function triggerRefreshEvent() {
+  const event = {
+    event: "accountRefreshEvent",
+    operation: "triggerCustomAction"
+  };
+  window.parent.postMessage(event, '*');
+}
+</script>
+
+<input type="button" value="Refresh" onclick="triggerRefreshEvent()" />
