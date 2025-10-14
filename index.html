@@ -1,11 +1,21 @@
-<script>
-function triggerRefreshEvent() {
-  const event = {
-    event: "accountRefreshEvent",
-    operation: "triggerCustomAction"
-  };
-  window.parent.postMessage(event, '*');
-}
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Refresh Button</title>
+</head>
+<body>
+  <input type="button" value="Refresh" onclick="triggerRefreshEvent()" />
 
-<input type="button" value="Refresh" onclick="triggerRefreshEvent()" />
+  <script>
+    function triggerRefreshEvent() {
+      const event = {
+        event: "accountRefreshEvent",
+        operation: "triggerCustomAction"
+      };
+      window.parent.postMessage(event, '*');
+    }
+  </script>
+</body>
+</html>
