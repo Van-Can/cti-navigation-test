@@ -23,14 +23,12 @@
             routingKey: "guidedselling",
             viewType: "quickcreate",
           },
-/*           data: {
-            objectType: "SalesOrder",
-            action: "Create",
-            // Kontextdaten für das Vorbelegen
+          data: {
+            AccountID: "1000110",
             contextData: {
               AccountID: "1000110",
             },
-          }, */
+          },
         };
 
         window.parent.postMessage(event, "*");
