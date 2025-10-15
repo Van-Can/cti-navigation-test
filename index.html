@@ -25,7 +25,14 @@
           params: {
             routingKey: "guidedselling",
             viewType: "quickcreate",
-            params: {$individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}'}
+            params: {
+              $individualCustomer:
+                '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
+            },
+          },
+          contextData: {
+            individualCustomer: { id: "0199c31f-e132-7000-920b-e781035e190d"} ,
+            isDraftMode: true,
           },
           data: {
             individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
