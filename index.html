@@ -8,32 +8,63 @@
   <body>
     <input
       type="button"
+      value="Lead anlegen"
+      onclick="openLeadQuickCreate()"
+    />
+    <input
+      type="button"
       value="Opportunity anlegen"
-      onclick="createOForCustomer()"
+      onclick="openOpportunityQuickCreate()"
+    />
+    <input
+      type="button"
+      value="Sales Quote anlegen"
+      onclick="openSalesQuoteQuickCreate()"
     />
 
     <script>
-      function createOForCustomer() {
-        console.log("we are in the widget, it does sth.");
-
+      function openOpportunityQuickCreate() {
         let event = {
           operation: "navigation",
           params: {
-//            objectKey: "00163ea6-f284-1eda-b895-42c904e08752",
             routingKey: "guidedselling",
             viewType: "quickcreate",
-            $individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}'
+            $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
           },
           data: {
-            individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}',
+            individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
             contextData: {
-              individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}'
+              individualCustomer:
+                '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
             },
           },
         };
 
         window.parent.postMessage(event, "*");
-        console.log("we are after the post of the message.");
+      }
+      function openLeadQuickCreate() {
+        let event = {
+          operation: "navigation",
+          params: {
+            routingKey: "lead",
+            viewType: "quickcreate",
+            $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
+          }
+        };
+
+        window.parent.postMessage(event, "*");
+      }
+      function openSalesQuoteQuickCreate() {
+        let event = {
+          operation: "navigation",
+          params: {
+            routingKey: "salesquote",
+            viewType: "quickcreate",
+            $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
+          }
+        };
+
+        window.parent.postMessage(event, "*");
       }
     </script>
   </body>
