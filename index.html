@@ -59,13 +59,32 @@
           operation: "navigation",
           params: {
             routingKey: "sales-quote",
-            viewType: "create",
+            //viewType: "create",
             $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
           }
         };
 
         window.parent.postMessage(event, "*");
       }
+
+        window.addEventListener("message", (evt) => {
+    if (!ALLOWED_ORIGINS.includes(evt.origin)) return;   // security
+
+    const msg = evt.data || {};
+    // All UI events use a { event, operation, data } shape.
+    switch (msg.event) {
+      case "uiEvent":
+        // react to host-sent UI events (e.g., refresh completed)
+        break;
+      case "contextEvent":
+        // receive current object context, ids, etc.
+        // e.g., const { objectType, objectId } = msg.data || {};
+        break;
+      default:
+        // ignore unknown events
+    }
+  });
+
     </script>
   </body>
 </html>
