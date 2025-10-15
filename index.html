@@ -1,25 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create Sales Order</title>
-</head>
-<body>
-  <input type="button" value="Neue Sales Order anlegen" onclick="openSalesOrder()" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Sales Order</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      value="Neue Sales Order anlegen"
+      onclick="createSOForCustomer()"
+    />
 
-  <script>
-    function openSalesOrder() {
-      const message = {
-        event: "navigationEvent",
-        operation: "navigateToObject",
-        data: {
-          objectType: "SalesOrder",
-          action: "Create"
-        }
-      };
-      window.parent.postMessage(message, "*");
-    }
-  </script>
-</body>
+    <script>
+      function createSOForCustomer() {
+        window.parent.postMessage(
+          {
+            event: "navigationEvent",
+            operation: "navigateToObject",
+            data: {
+              objectType: "SalesOrder",
+              action: "Create",
+              // Kontextdaten für das Vorbelegen
+              contextData: {
+                AccountID: "1000110"
+              },
+            },
+          },
+          "*"
+        );
+      }
+    </script>
+  </body>
 </html>
