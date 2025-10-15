@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Refresh Button</title>
+  <title>Create Sales Order</title>
 </head>
 <body>
-  <input type="button" value="Refresh" onclick="triggerRefreshEvent()" />
+  <input type="button" value="Neue Sales Order anlegen" onclick="openSalesOrder()" />
 
   <script>
-    function triggerRefreshEvent() {
-      const event = {
-        event: "accountRefreshEvent",
-        operation: "triggerCustomAction"
+    function openSalesOrder() {
+      const message = {
+        event: "navigationEvent",
+        operation: "navigateToObject",
+        data: {
+          objectType: "SalesOrder",
+          action: "Create"
+        }
       };
-      window.parent.postMessage(event, '*');
+      window.parent.postMessage(message, "*");
     }
   </script>
 </body>
