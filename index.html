@@ -8,8 +8,8 @@
   <body>
     <input
       type="button"
-      value="Neue Sales Order anlegen"
-      onclick="createSOForCustomer()"
+      value="Opportunity anlegen"
+      onclick="createOForCustomer()"
     />
 
     <script>
@@ -22,11 +22,12 @@
 //            objectKey: "00163ea6-f284-1eda-b895-42c904e08752",
             routingKey: "guidedselling",
             viewType: "quickcreate",
+            $individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}'
           },
           data: {
-            AccountID: "1000110",
+            individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}',
             contextData: {
-              AccountID: "1000110",
+              individualCustomer:'{id: "0199c31f-e132-7000-920b-e781035e190d"}'
             },
           },
         };
