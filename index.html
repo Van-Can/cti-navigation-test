@@ -42,10 +42,16 @@
         let event = {
           operation: "navigation",
           params: {
-            objectKey: "11efcc3f-cec9-a25e-afdb-81d149020a00",
             routingKey: "lead",
             viewType: "quickcreate",
-            $search: "alex"
+            prefill: {
+              name: "andreas-test-lead",
+              // Replace 'fieldID' with the actual technical ID of the field
+              // account: { id: "11efcc3f-cec9-a25e-afdb-81d149020a00" },
+              // Add more fields as needed (e.g., Category, Priority)
+              // "IncidentCategory": "1",
+              // "Priority": "2"
+            },
           },
         };
 
