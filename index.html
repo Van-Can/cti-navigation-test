@@ -6,11 +6,7 @@
     <title>Create Sales Order</title>
   </head>
   <body>
-    <input
-      type="button"
-      value="Lead anlegen"
-      onclick="openLeadQuickCreate()"
-    />
+    <input type="button" value="Lead anlegen" onclick="openLeadQuickCreate()" />
     <input
       type="button"
       value="Opportunity anlegen"
@@ -49,7 +45,7 @@
             routingKey: "lead",
             viewType: "quickcreate",
             $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
-          }
+          },
         };
 
         window.parent.postMessage(event, "*");
@@ -61,30 +57,16 @@
             routingKey: "sales-quote",
             //viewType: "create",
             $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
-          }
+          },
         };
 
         window.parent.postMessage(event, "*");
       }
 
-        window.addEventListener("message", (evt) => {
-    if (!ALLOWED_ORIGINS.includes(evt.origin)) return;   // security
-
-    const msg = evt.data || {};
-    // All UI events use a { event, operation, data } shape.
-    switch (msg.event) {
-      case "uiEvent":
-        // react to host-sent UI events (e.g., refresh completed)
-        break;
-      case "contextEvent":
-        // receive current object context, ids, etc.
-        // e.g., const { objectType, objectId } = msg.data || {};
-        break;
-      default:
-        // ignore unknown events
-    }
-  });
-
+      window.parent.addEventListener("message", (evt) => {
+        const msg = evt.data || {};
+        console.log(`new event: ${JSON.stringify(evt)}`);
+      });
     </script>
   </body>
 </html>
