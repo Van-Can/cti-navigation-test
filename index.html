@@ -14,21 +14,27 @@
 
     <script>
       function createSOForCustomer() {
-        window.parent.postMessage(
-          {
-            event: "navigationEvent",
-            operation: "navigateToObject",
-            data: {
-              objectType: "SalesOrder",
-              action: "Create",
-              // Kontextdaten für das Vorbelegen
-              contextData: {
-                AccountID: "1000110"
-              },
-            },
+        console.log("we are in the widget, it does sth.");
+
+        let event = {
+          operation: "navigation",
+          params: {
+//            objectKey: "00163ea6-f284-1eda-b895-42c904e08752",
+            routingKey: "SalesOrder",
+            viewType: "quickcreate",
           },
-          "*"
-        );
+/*           data: {
+            objectType: "SalesOrder",
+            action: "Create",
+            // Kontextdaten für das Vorbelegen
+            contextData: {
+              AccountID: "1000110",
+            },
+          }, */
+        };
+
+        window.parent.postMessage(event, "*");
+        console.log("we are after the post of the message.");
       }
     </script>
   </body>
