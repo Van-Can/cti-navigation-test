@@ -4,19 +4,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Create Sales Order</title>
+    <style>
+      body {
+        font-family: "72", "Arial", sans-serif;
+        background-color: #f7f7f7;
+        color: #32363a;
+        margin: 0;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      input[type="button"] {
+        appearance: none;
+        border: none;
+        padding: 0.625rem 1.5rem;
+        font-size: 0.875rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 0 1px #d1d5db inset;
+      }
+
+      input[type="button"]:hover {
+        box-shadow: 0 0 0 1px #0a6ed1 inset;
+        background-color: #f0f8ff;
+      }
+
+      /* SAP Fiori-style primary button */
+      input[type="button"]:first-of-type {
+        background-color: #0a6ed1;
+        color: white;
+        box-shadow: none;
+      }
+
+      input[type="button"]:first-of-type:hover {
+        background-color: #0854a0;
+      }
+
+      /* SAP Fiori secondary buttons */
+      input[type="button"]:not(:first-of-type) {
+        background-color: white;
+        color: #0a6ed1;
+      }
+
+      input[type="button"]:not(:first-of-type):hover {
+        background-color: #eaf3fc;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .footer-note {
+        margin-top: 2rem;
+        font-size: 0.75rem;
+        color: #6a6d70;
+      }
+    </style>
   </head>
   <body>
-    <input type="button" value="Lead anlegen" onclick="openLeadQuickCreate()" />
-    <input
-      type="button"
-      value="Opportunity anlegen"
-      onclick="openOpportunityQuickCreate()"
-    />
-    <input
-      type="button"
-      value="Sales Quote anlegen"
-      onclick="openSalesQuoteQuickCreate()"
-    />
+    <h1>Create Sales Order</h1>
+
+    <div class="button-group">
+      <input type="button" value="Lead anlegen" onclick="openLeadQuickCreate()" />
+      <input type="button" value="Opportunity anlegen" onclick="openOpportunityQuickCreate()" />
+      <!-- <input type="button" value="Sales Quote anlegen" onclick="openSalesQuoteQuickCreate()" /> -->
+    </div>
+
+    <div class="footer-note">
+      Styled to match SAP Fiori Horizon theme (custom CSS, no UI5 dependency)
+    </div>
 
     <script>
       function openOpportunityQuickCreate() {
@@ -31,7 +99,7 @@
             },
           },
           contextData: {
-            individualCustomer: { id: "0199c31f-e132-7000-920b-e781035e190d"} ,
+            individualCustomer: { id: "0199c31f-e132-7000-920b-e781035e190d" },
             isDraftMode: true,
           },
           data: {
@@ -42,9 +110,9 @@
             },
           },
         };
-
         window.parent.postMessage(event, "*");
       }
+
       function openLeadQuickCreate() {
         let event = {
           operation: "navigation",
@@ -53,34 +121,28 @@
             viewType: "quickcreate",
             prefill: {
               name: "andreas-test-lead",
-              // Replace 'fieldID' with the actual technical ID of the field
-              // account: { id: "11efcc3f-cec9-a25e-afdb-81d149020a00" },
-              // Add more fields as needed (e.g., Category, Priority)
-              // "IncidentCategory": "1",
-              // "Priority": "2"
             },
           },
         };
-
         window.parent.postMessage(event, "*");
       }
+
       function openSalesQuoteQuickCreate() {
         let event = {
           operation: "navigation",
           params: {
             routingKey: "sales-quote",
             viewType: "list",
-            $individualCustomer: '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
+            $individualCustomer:
+              '{id: "0199c31f-e132-7000-920b-e781035e190d"}',
           },
         };
-
         window.parent.postMessage(event, "*");
       }
 
       window.parent.addEventListener("message", (evt) => {
-        const msg = evt.data || {};
-        console.log(`new event: ${JSON.stringify(evt)}`);
+        console.log(`new event: ${JSON.stringify(evt.data)}`);
       });
     </script>
   </body>
-</html>
+</html> 
